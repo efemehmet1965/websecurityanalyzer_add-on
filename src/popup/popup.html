@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Security Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <!-- Header -->
+        <header class="popup-header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 17L12 22L21 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 12L12 17L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Web Security Analyzer</span>
+                </div>
+            </div>
+            <button id="refreshBtn" class="refresh-button" title="Yeniden Analiz Et">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 12A9 9 0 0 1 12 3C16.97 3 21 7.03 21 12S16.97 21 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 12L7 8L3 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading-container">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <div class="progress-container">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="progress-text">Websitesi analiz ediliyor...</div>
+                </div>
+                <button id="cancelBtn" class="cancel-button">İptal Et</button>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error-container" style="display: none;">
+            <div class="error-content">
+                <div class="error-icon">⚠️</div>
+                <h3>Analiz Hatası</h3>
+                <p id="errorMessage">Bir hata oluştu</p>
+                <button id="retryBtn" class="retry-button">Tekrar Dene</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainContent" class="main-content" style="display: none;">
+            <!-- Site Info -->
+            <section class="site-info">
+                <div class="site-header">
+                    <div class="site-icon">🌐</div>
+                    <div class="site-details">
+                        <h2 id="siteName">Site Adı</h2>
+                        <p id="siteUrl">site.com</p>
+                    </div>
+                    <div class="security-score">
+                        <div class="score-circle">
+                            <span id="securityScore">85</span>
+                        </div>
+                        <span class="score-label">Güvenlik Skoru</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Tabs -->
+            <nav class="tab-navigation">
+                <button class="tab-button active" data-tab="overview">Genel Bakış</button>
+                <button class="tab-button" data-tab="technologies">Teknolojiler</button>
+                <button class="tab-button" data-tab="security">Güvenlik</button>
+            </nav>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Overview Tab -->
+                <div id="overview" class="tab-panel active">
+                    <div class="overview-grid">
+                        <div class="overview-card">
+                            <div class="card-icon">🔒</div>
+                            <div class="card-content">
+                                <h3>HTTPS Durumu</h3>
+                                <p id="httpsStatus">Güvenli</p>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <div class="card-icon">⚠️</div>
+                            <div class="card-content">
+                                <h3>Güvenlik Uyarıları</h3>
+                                <p id="securityWarnings">0 uyarı</p>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <div class="card-icon">🔧</div>
+                            <div class="card-content">
+                                <h3>Tespit Edilen Teknolojiler</h3>
+                                <p id="techCount">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-card">
+                            <div class="card-icon">🌐</div>
+                            <div class="card-content">
+                                <h3>Dış Kaynaklar</h3>
+                                <p id="externalCount">0 kaynak</p>
+                            </div>
+                        </div>
+
+                        <div class="overview-card">
+                            <div class="card-icon">🗺️</div>
+                            <div class="card-content">
+                                <h3>Sitemap Durumu</h3>
+                                <p id="sitemapStatus">Kontrol ediliyor...</p>
+                            </div>
+                        </div>
+
+                        <div class="overview-card">
+                            <div class="card-icon">🤖</div>
+                            <div class="card-content">
+                                <h3>Robots.txt Durumu</h3>
+                                <p id="robotsStatus">Kontrol ediliyor...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3>Hızlı İşlemler</h3>
+                        <div class="action-buttons">
+                            <button id="exportBtn" class="action-button">
+                                <span>📊</span>
+                                Rapor İndir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technologies Tab -->
+                <div id="technologies" class="tab-panel">
+                    <div class="section-header">
+                        <h3>Tespit Edilen Teknolojiler</h3>
+                        <span id="techBadge" class="badge">0</span>
+                    </div>
+                    <div id="technologiesList" class="technologies-list">
+                        <!-- Teknolojiler buraya dinamik olarak eklenecek -->
+                    </div>
+
+                    <!-- Subdomain ve External Domain Bölümü -->
+                    <div class="section-header" style="margin-top: 24px;">
+                        <h3>Bağlı Kaynaklar</h3>
+                    </div>
+                    
+                    <div class="resources-section">
+                        <div class="resource-category">
+                            <h4>Alt Domainler</h4>
+                            <div id="subdomainsList" class="resource-list">
+                                <!-- Subdomain'ler buraya eklenecek -->
+                            </div>
+                        </div>
+                        
+                        <div class="resource-category">
+                            <h4>Dış Kaynaklar</h4>
+                            <div id="externalDomainsList" class="resource-list">
+                                <!-- External domain'ler buraya eklenecek -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div id="security" class="tab-panel">
+                    <div class="security-sections">
+                        <!-- Güvenlik analizi buraya dinamik olarak eklenecek -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
+

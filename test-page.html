@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Test Generator 1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Web Security Analyzer Test Sayfası</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        
+        .test-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+        }
+        
+        .security-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-container">
+            <div class="text-center mb-4">
+                <h1 class="display-4 text-primary">
+                    <i class="fas fa-shield-alt"></i>
+                    Web Security Analyzer
+                </h1>
+                <p class="lead text-muted">Test Sayfası - Uzantı Fonksiyonlarını Test Edin</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-cog text-primary"></i> Teknoloji Tespiti</h3>
+                        <p>Bu sayfa aşağıdaki teknolojileri kullanmaktadır:</p>
+                        <ul>
+                            <li>Bootstrap 5.1.3 (CSS Framework)</li>
+                            <li>Font Awesome 6.0.0 (Icon Library)</li>
+                            <li>Google Fonts (Web Fonts)</li>
+                            <li>jQuery 3.6.0 (JavaScript Library)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-lock text-success"></i> Güvenlik Özellikleri</h3>
+                        <p>Bu sayfa güvenlik testleri için:</p>
+                        <ul>
+                            <li>HTTPS protokolü kullanıyor</li>
+                            <li>Referrer Policy ayarlanmış</li>
+                            <li>Meta generator tag'i var</li>
+                            <li>Dış kaynaklardan CSS/JS yüklüyor</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-warning">
+                <h4><i class="fas fa-exclamation-triangle text-warning"></i> Test Senaryoları</h4>
+                <p>Bu sayfa aşağıdaki test senaryolarını içerir:</p>
+                <ul class="mb-0">
+                    <li>Dış kaynaklardan CSS ve JavaScript yükleme</li>
+                    <li>Form güvenliği testi</li>
+                    <li>Meta tag analizi</li>
+                    <li>Teknoloji fingerprinting</li>
+                </ul>
+            </div>
+
+            <!-- Test Formu -->
+            <div class="mt-4">
+                <h3><i class="fas fa-edit text-info"></i> Test Formu</h3>
+                <form id="testForm" method="POST" action="https://httpbin.org/post">
+                    <input type="hidden" name="_token" value="test-csrf-token-12345">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Kullanıcı Adı</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-posta</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Şifre</label>
+                        <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Dosya Yükleme</label>
+                        <input type="file" class="form-control" id="file" name="file">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-custom">
+                        <i class="fas fa-paper-plane"></i> Formu Gönder
+                    </button>
+                </form>
+            </div>
+
+            <!-- Test Butonları -->
+            <div class="mt-4">
+                <h3><i class="fas fa-play text-success"></i> Test İşlemleri</h3>
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-custom" onclick="testAnalyzer()">
+                        <i class="fas fa-search"></i> Analizi Başlat
+                    </button>
+                    <button class="btn btn-outline-primary" onclick="showConsole()">
+                        <i class="fas fa-terminal"></i> Console Logları
+                    </button>
+                    <button class="btn btn-outline-success" onclick="testTechnologies()">
+                        <i class="fas fa-cogs"></i> Teknoloji Testi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sonuç Alanı -->
+            <div id="results" class="mt-4" style="display: none;">
+                <h3><i class="fas fa-chart-bar text-primary"></i> Analiz Sonuçları</h3>
+                <div id="resultsContent" class="feature-card">
+                    <!-- Sonuçlar buraya gelecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Test Script'leri -->
+    <script>
+        // Test fonksiyonları
+        function testAnalyzer() {
+            console.log('Web Security Analyzer test başlatıldı');
+            
+            // Uzantının varlığını kontrol et
+            if (typeof chrome !== 'undefined' && chrome.runtime) {
+                console.log('Chrome uzantı API\'si mevcut');
+                showResults('Uzantı API\'si tespit edildi. Analiz başlatılıyor...');
+            } else {
+                console.log('Chrome uzantı API\'si bulunamadı');
+                showResults('Uzantı yüklü değil veya bu sayfa desteklenmiyor.');
+            }
+        }
+        
+        function showConsole() {
+            console.log('=== Web Security Analyzer Test Logları ===');
+            console.log('Sayfa URL\'si:', window.location.href);
+            console.log('Protokol:', window.location.protocol);
+            console.log('Domain:', window.location.hostname);
+            console.log('Güvenli bağlam:', window.isSecureContext);
+            console.log('jQuery sürümü:', typeof $ !== 'undefined' ? $.fn.jquery : 'Yüklü değil');
+            console.log('Bootstrap:', typeof bootstrap !== 'undefined' ? 'Yüklü' : 'Yüklü değil');
+            
+            showResults('Console logları yazdırıldı. F12 ile Developer Tools\'u açın.');
+        }
+        
+        function testTechnologies() {
+            const technologies = [];
+            
+            // Framework tespiti
+            if (typeof $ !== 'undefined') {
+                technologies.push(`jQuery ${$.fn.jquery}`);
+            }
+            
+            if (typeof bootstrap !== 'undefined') {
+                technologies.push('Bootstrap 5');
+            }
+            
+            // CSS framework tespiti
+            const stylesheets = Array.from(document.styleSheets);
+            stylesheets.forEach(sheet => {
+                if (sheet.href) {
+                    if (sheet.href.includes('bootstrap')) {
+                        technologies.push('Bootstrap CSS');
+                    }
+                    if (sheet.href.includes('font-awesome')) {
+                        technologies.push('Font Awesome');
+                    }
+                    if (sheet.href.includes('fonts.googleapis.com')) {
+                        technologies.push('Google Fonts');
+                    }
+                }
+            });
+            
+            showResults(`Tespit edilen teknolojiler: ${technologies.join(', ')}`);
+        }
+        
+        function showResults(message) {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('resultsContent');
+            
+            contentDiv.innerHTML = `
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> ${message}
+                </div>
+                <small class="text-muted">Zaman: ${new Date().toLocaleTimeString()}</small>
+            `;
+            
+            resultsDiv.style.display = 'block';
+        }
+        
+        // Sayfa yüklendiğinde
+        $(document).ready(function() {
+            console.log('Test sayfası yüklendi');
+            console.log('jQuery aktif:', typeof $ !== 'undefined');
+            
+            // Form submit testi
+            $('#testForm').on('submit', function(e) {
+                e.preventDefault();
+                showResults('Form gönderimi test edildi (gerçek gönderim engellendi)');
+            });
+        });
+        
+        // Inline script testi (güvenlik analizi için)
+        console.log('Inline script çalıştırıldı');
+    </script>
+    
+    <!-- Inline event handler testi -->
+    <div style="display: none;">
+        <button onclick="console.log('Inline event handler')">Test</button>
+    </div>
+</body>
+</html>
+

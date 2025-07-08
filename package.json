@@ -1,0 +1,45 @@
+{
+  "name": "web-security-analyzer",
+  "version": "1.0.0",
+  "description": "Web sitelerinin güvenlik risklerini ve kullanılan teknolojileri analiz eden Chrome uzantısı",
+  "main": "manifest.json",
+  "scripts": {
+    "build": "echo 'Building extension...' && npm run validate",
+    "validate": "node scripts/validate-manifest.js",
+    "test": "echo 'Running tests...'",
+    "lint": "eslint src/",
+    "format": "prettier --write src/",
+    "zip": "zip -r web-security-analyzer.zip . -x node_modules/\\* .git/\\* *.zip"
+  },
+  "keywords": [
+    "chrome-extension",
+    "security",
+    "web-security",
+    "technology-detection",
+    "manifest-v3",
+    "security-analysis",
+    "vulnerability-scanner"
+  ],
+  "author": "Web Security Analyzer Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/web-security-analyzer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/web-security-analyzer/issues"
+  },
+  "homepage": "https://github.com/your-username/web-security-analyzer#readme",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "manifest": {
+    "version": 3,
+    "minimum_chrome_version": "88"
+  }
+}
+
