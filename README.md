@@ -183,11 +183,8 @@ Herhangi bir sorun yaşarsanız veya öneriniz varsa:
 - [ ] Gelişmiş raporlama seçenekleri
 - [ ] API entegrasyonları
 
-## Katkıda Bulunanlar
 
-- **Ana Geliştirici**: [Your Name]
-- **Tasarım**: [Designer Name]
-- **Test**: [Tester Name]
+-**https://github.com/efemehmet1965**
 
 ---
 
